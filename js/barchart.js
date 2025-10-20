@@ -18,7 +18,7 @@ $(document).ready(function () {
       boxHead = box1Head;
       highPCT = `5%`;
       multiplier = 20;
-      question = `Have you been displaced by a natural disaster in the past year?`
+      question = `Percentage of respondents displaced by natural disaster in the past year`
 
       // ✅ FIXED: reverse values so disabled is on top (to match chart 2)
       startPCTDisabled = 2.94;
@@ -29,7 +29,7 @@ $(document).ready(function () {
       boxHead = box2Head;
       highPCT = `40%`;
       multiplier = 2.857;
-      question = `Have you returned home one year after displacement?`
+      question = `Percentage of respondents who had not returned home, a year after displacement`
 
       startPCTDisabled = 21.51;
       startPCTNon = 5.83;
@@ -151,3 +151,4 @@ $(document).ready(function () {
     });
   });
 });
+
