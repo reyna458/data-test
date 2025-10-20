@@ -4,6 +4,7 @@ $(document).ready(function () {
 
   const box1Head = `<h2>On average, people with disabilities were <span class='highlight'>almost twice as likely</span> to be displaced in a natural disaster.</h2>`;
   const box2Head = `<h2>People with disabilities were <span class='highlight'>nearly four times as likely</span> to have not returned home, a year after displacement.</h2>`;
+  let question;
 
   $(".bar-chart-box").each(function () {
     const $box = $(this);
@@ -17,6 +18,7 @@ $(document).ready(function () {
       boxHead = box1Head;
       highPCT = `5%`;
       multiplier = 20;
+      question = `Have you been displaced by a natural disaster in the past year?`
 
       // ✅ FIXED: reverse values so disabled is on top (to match chart 2)
       startPCTDisabled = 2.94;
@@ -27,6 +29,7 @@ $(document).ready(function () {
       boxHead = box2Head;
       highPCT = `40%`;
       multiplier = 2.857;
+      question = `Have you returned home one year after displacement?`
 
       startPCTDisabled = 21.51;
       startPCTNon = 5.83;
@@ -45,7 +48,7 @@ $(document).ready(function () {
         .dropdown-list li { color: white; font-family: "Raleway", sans-serif; cursor: pointer; }
         .dropdown-list li:hover { text-decoration: underline; }
         .dropdown { rotate: 270deg; max-width: 10px; cursor: pointer; }
-        .dropdown-menu { width: 100%; display: grid; grid-template-columns: 3fr 1fr 3fr 3fr; margin-bottom: 2.5%; align-items: end; }
+        .dropdown-menu { width: 100%; display: grid; grid-template-columns: 3fr 1fr 3fr 3fr; margin-bottom: 2.5%; align-items: end; grid-template-rows: 1fr, 1fr; }
         .barchart div { display: grid; grid-template-columns: 3fr 1fr; padding: 0 2.5%; align-items: center; }
         .barchart-axis { border-top: white solid 3px; width: ${barSize}; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; margin-top: 1%; }
         .lowpct { grid-column: 1; justify-self: left; }
@@ -55,6 +58,7 @@ $(document).ready(function () {
         .barchart h6 { color: black; font-size: 125%; padding-left: 5px; }
         .disabled-legend { background-color: #AFBDEE; padding: 1%; color: black; grid-column: 3; font-family: 'Raleway', sans-serif; width: 80%; font-size: 75%; }
         .nondisabled-legend { background-color: #d9d9d9; padding: 1%; color: black; grid-column: 4; font-family: 'Raleway', sans-serif; width: 80%; font-size: 75%; }
+        .question { grid-row: 2; grid-column: 1 / span 3;}
       </style>
 
       <div class="dataviz-hed">${boxHead}</div>
@@ -73,6 +77,7 @@ $(document).ready(function () {
         </ul>
         <p class='disabled-legend'>Disabled</p>
         <p class='nondisabled-legend'>Non-disabled</p>
+        <p class='question'>${question}</p>
       </div>
 
       <div class="barchart">
