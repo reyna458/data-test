@@ -1,0 +1,83 @@
+$(document).ready(function () {
+
+
+    $(window).on("scroll", function handler() {
+        let scrollScore = $(window).scrollTop();
+       
+
+        if (scrollScore >= 100) {
+             console.log(scrollScore)
+
+            $('html, body').animate({
+                scrollTop: $("#bighead").offset().top - 50
+            }, 800);
+
+            $('.intro-graf h2').css("opacity", "1")
+
+            $(window).off("scroll", handler);
+        }
+    });
+
+    $(window).on("scroll", function handler() {
+        let scrollScore = $(window).scrollTop();
+       
+
+        if (scrollScore >= 1000) {
+             console.log(scrollScore)
+
+            $('html, body').animate({
+                scrollTop: $(".data-viz-box").offset().top - 200
+            }, 800);
+
+            $('.bluebox').css("opacity", "1")
+            $('.graybox').css("opacity", "1")
+
+            $(window).off("scroll", handler);
+        }
+    });
+
+     $(window).on("scroll", function handler() {
+        let scrollScore = $(window).scrollTop();
+       
+
+        if (scrollScore >= 2000) {
+             console.log(scrollScore)
+
+            $('html, body').animate({
+                scrollTop: $("#barchart1").offset().top - 200
+            }, 800);
+
+            $(window).off("scroll", handler);
+        }
+    });
+
+     $(window).on("scroll", function handler() {
+        let scrollScore = $(window).scrollTop();
+       
+
+        if (scrollScore >= 3000) {
+             console.log(scrollScore)
+
+            $('html, body').animate({
+                scrollTop: $("#barchart2").offset().top - 200
+            }, 800);
+
+            $(window).off("scroll", handler);
+        }
+    });
+
+     $(window).on("scroll", function handler() {
+        let scrollScore = $(window).scrollTop();
+       
+
+        if (scrollScore >= 4000) {
+             console.log(scrollScore)
+
+            $('html, body').animate({
+                scrollTop: $(".article-body").offset().top - 200
+            }, 800);
+
+            $(window).off("scroll", handler);
+        }
+    });
+});
