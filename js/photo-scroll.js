@@ -3,7 +3,7 @@ $(document).ready(function () {
     const maxPhotos = 4;
 
     function photoUpdate() {
-        const photoChoice = `url(../assets/temp-cover${photoCount}.png)`;
+        const photoChoice = `url(./assets/temp-cover${photoCount}.png)`;
         $('header').css("background-image", photoChoice);
     }
 
@@ -28,3 +28,4 @@ $(document).ready(function () {
         photoUpdate();
     });
 });
+
