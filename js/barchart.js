@@ -58,7 +58,7 @@ $(document).ready(function () {
         .barchart h6 { color: black; font-size: 125%; padding-left: 5px; }
         .disabled-legend { background-color: #AFBDEE; padding: 1%; color: black; grid-column: 3; font-family: 'Raleway', sans-serif; width: 80%; font-size: 75%; }
         .nondisabled-legend { background-color: #d9d9d9; padding: 1%; color: black; grid-column: 4; font-family: 'Raleway', sans-serif; width: 80%; font-size: 75%; }
-        .question { grid-row: 2; grid-column: 1 / span 3;}
+        .question { grid-row: 2; grid-column: 1 / span 4;}
       </style>
 
       <div class="dataviz-hed">${boxHead}</div>
@@ -151,4 +151,5 @@ $(document).ready(function () {
     });
   });
 });
+
 
