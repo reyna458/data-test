@@ -23,6 +23,7 @@ p {
     font-family: 'EB Garamond', serif;
     font-weight: 500;
     color: white;
+    line-height: 150%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -252,12 +253,48 @@ p {
 
 /* dataviz box */
 
-.data-viz-box, .bar-chart-box {
+/* .data-viz-box, .bar-chart-box {
     margin-bottom: 75%;
     margin-top: 75%;
-}
+} */
 
 .dropdown {
     justify-self: center;
     align-self: center;
+}
+
+/* STORY BLOCK */
+
+.story-block p {
+    font-size: 150%;
+    opacity: 1;
+    margin-top: 5%;
+}
+
+/* SCROLLYTELLING */
+
+#scrolly {
+  position: relative;
+  width: 100%;
+}
+
+.step {
+  position: relative;
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20vh);
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step.past {
+  opacity: 0;
+  transform: translateY(-20vh);
 }

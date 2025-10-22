@@ -1,83 +1,57 @@
 $(document).ready(function () {
+  const steps = $(".step");
+  let isAutoScrolling = false;
+  let activeIndex = -1;
+  let scrollTimeout;
 
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (isAutoScrolling) return;
 
-    $(window).on("scroll", function handler() {
-        let scrollScore = $(window).scrollTop();
-       
+      entries.forEach((entry) => {
+        const index = steps.index(entry.target);
 
-        if (scrollScore >= 100) {
-             console.log(scrollScore)
+        // Only act when element is clearly visible and not already active
+        if (entry.isIntersecting && index !== activeIndex) {
+          clearTimeout(scrollTimeout); // debounce rapid scrolls
 
-            $('html, body').animate({
-                scrollTop: $("#bighead").offset().top - 50
-            }, 800);
+          // Small delay to ensure direction stability (prevents flicker)
+          scrollTimeout = setTimeout(() => {
+            activeIndex = index;
 
-            $('.intro-graf h2').css("opacity", "1")
+            steps.removeClass("active past");
+            entry.target.classList.add("active");
+            steps.slice(0, index).addClass("past");
 
-            $(window).off("scroll", handler);
+            // 🔹 Trigger your data-viz animation
+            if ($(entry.target).hasClass("data-viz-box")) {
+              $(".bluebox, .graybox").css("opacity", "1");
+            }
+
+            // 🔹 Auto scroll precisely to that section
+            isAutoScrolling = true;
+            $("html, body")
+              .stop()
+              .animate(
+                {
+                  scrollTop: $(entry.target).offset().top - 450,
+                },
+                150, // ⏱ shorter duration — feels snappier
+                "swing",
+                () => {
+                  isAutoScrolling = false;
+                }
+              );
+          }, 100); // small debounce so it doesn't bounce back/forth
         }
-    });
+      });
+    },
+    {
+      threshold: 0.1, // wait until 70% visible before triggering
+    }
+  );
 
-    $(window).on("scroll", function handler() {
-        let scrollScore = $(window).scrollTop();
-       
-
-        if (scrollScore >= 1000) {
-             console.log(scrollScore)
-
-            $('html, body').animate({
-                scrollTop: $(".data-viz-box").offset().top - 200
-            }, 800);
-
-            $('.bluebox').css("opacity", "1")
-            $('.graybox').css("opacity", "1")
-
-            $(window).off("scroll", handler);
-        }
-    });
-
-     $(window).on("scroll", function handler() {
-        let scrollScore = $(window).scrollTop();
-       
-
-        if (scrollScore >= 2000) {
-             console.log(scrollScore)
-
-            $('html, body').animate({
-                scrollTop: $("#barchart1").offset().top - 200
-            }, 800);
-
-            $(window).off("scroll", handler);
-        }
-    });
-
-     $(window).on("scroll", function handler() {
-        let scrollScore = $(window).scrollTop();
-       
-
-        if (scrollScore >= 3000) {
-             console.log(scrollScore)
-
-            $('html, body').animate({
-                scrollTop: $("#barchart2").offset().top - 200
-            }, 800);
-
-            $(window).off("scroll", handler);
-        }
-    });
-
-     $(window).on("scroll", function handler() {
-        let scrollScore = $(window).scrollTop();
-       
-
-        if (scrollScore >= 4000) {
-             console.log(scrollScore)
-
-            $('html, body').animate({
-                scrollTop: $(".article-body").offset().top - 200
-            }, 800);
-
-            $(window).off("scroll", handler);
-        }
-    });
+  steps.each(function () {
+    observer.observe(this);
+  });
 });

@@ -50,7 +50,7 @@ $(document).ready(function () {
         .dropdown { rotate: 270deg; max-width: 10px; cursor: pointer; }
         .dropdown-menu { width: 100%; display: grid; grid-template-columns: 3fr 1fr 3fr 3fr; margin-bottom: 2.5%; align-items: end; grid-template-rows: 1fr, 1fr; }
         .barchart div { display: grid; grid-template-columns: 3fr 1fr; padding: 0 2.5%; align-items: center; }
-        .barchart-axis { border-top: white solid 3px; width: ${barSize}; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;}
+        .barchart-axis { border-top: white solid 3px; width: ${barSize}; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; margin-top: 1%; }
         .lowpct { grid-column: 1; justify-self: left; }
         .highpct { grid-column: 5; justify-self: right; }
         .disabled { background-color: #AFBDEE; transition: width 1s ease-in-out; overflow: visible; }
@@ -151,6 +151,3 @@ $(document).ready(function () {
     });
   });
 });
-
-
-
